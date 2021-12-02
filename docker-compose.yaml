@@ -1,0 +1,13 @@
+version: '3.7'
+
+services:
+  angry_eyes:
+    image: angry_eyes:latest
+    build: .
+    command: bash
+    privileged: true
+    environment:
+      - DISPLAY=$DISPLAY
+      - QT_GRAPHICSSYSTEM="native"
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix/:rw
