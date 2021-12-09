@@ -1,5 +1,6 @@
 #pragma once
 
+#include "data_model.h"
 #include "eye.h"
 #include <QGraphicsScene>
 #include <QGraphicsEllipseItem>
@@ -16,6 +17,8 @@ public:
     std::unique_ptr<Eye> m_rightEye;
     std::unique_ptr<Eye> m_leftEye;
 
+    void setConfig(const FaceConfig &config);
+
     int getEyeRadius() const;
     int getInterocularDistance() const;
     QPoint getEyePosition() const;
@@ -29,5 +32,9 @@ private:
     int m_interocularDistance;
     int m_eyeRadius;
     QPoint m_center;
+
+    void applyEyeConfig(
+            std::unique_ptr<Eye> &eye,
+            const EyeConfig &config);
 
 };

@@ -15,6 +15,7 @@ SOURCES += src/main.cpp\
     src/eye.cpp
 
 HEADERS += include/mainwindow.h \
+    include/data_model.h \
     include/eye_pair.h \
     include/eyes_scene.h \
     include/eye.h

@@ -21,6 +21,13 @@ EyePair::~EyePair()
 }
 
 
+void EyePair::setConfig(const FaceConfig &config)
+{
+    applyEyeConfig(m_leftEye, config.leftEye);
+    applyEyeConfig(m_rightEye, config.rightEye);
+}
+
+
 int EyePair::getEyeRadius() const
 {
     return m_eyeRadius;
@@ -68,4 +75,23 @@ void EyePair::setEyePosition(const QPoint &point)
 
     m_leftEye->setEyePosition(QPoint(left_x, left_y));
     m_rightEye->setEyePosition(QPoint(right_x, right_y));
+}
+
+
+void EyePair::applyEyeConfig(std::unique_ptr<Eye> &eye, const EyeConfig &config)
+{
+    const float scalar = 50;
+    const float maxAngle = 45;
+
+    const float eyeRadius = config.pupilRadius.value * scalar;
+    const float bottomBrowThickness = config.bottomBrow.thickness.value * eyeRadius;
+    const float bottomBrowAngle = -maxAngle + (config.bottomBrow.angle.value * (maxAngle * 2.0));
+    const float topBrowThickness = config.topBrow.thickness.value * eyeRadius;
+    const float topBrowAngle = -maxAngle + (config.topBrow.angle.value * (maxAngle * 2.0));
+
+    eye->setEyeRadius(config.pupilRadius.value * scalar);
+    eye->setBottomBrowThickness(bottomBrowThickness);
+    eye->setBottomBrowAngle(bottomBrowAngle);
+    eye->setTopBrowThickness(topBrowThickness);
+    eye->setTopBrowAngle(topBrowAngle);
 }

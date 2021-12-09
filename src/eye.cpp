@@ -54,7 +54,7 @@ void Eye::setTopBrowAngle(const int &angle)
     {
         s *= -1;
     }
-    m_topBrowAngle = angle * s;
+    m_topBrowAngle = (90 * s) + (angle * s);
     draw();
 }
 
@@ -66,7 +66,7 @@ void Eye::setBottomBrowAngle(const int &angle)
     {
         s *= -1;
     }
-    m_bottomBrowAngle = angle * s;
+    m_bottomBrowAngle = (90 * s) + (angle * s);
     draw();
 }
 

@@ -5,6 +5,7 @@
 #include <QGraphicsEllipseItem>
 #include <memory>
 
+#include "data_model.h"
 #include "eye_pair.h"
 #include "eyes_scene.h"
 
@@ -22,6 +23,8 @@ public:
     ~MainWindow();
 
 private:
+    FaceConfig m_data;
+
     Ui::MainWindow *ui;
     EyesScene *m_graphicsScene;
     QGraphicsEllipseItem *m_rightEye;

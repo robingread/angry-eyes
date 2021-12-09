@@ -56,7 +56,11 @@ void MainWindow::onEyeRadiusValue(const int &value)
 {
     const QString s = "Eye Radius: " + QString::number(value);
     ui->eyeRadiusLabel->setText(s);
-    m_graphicsScene->m_eyePair->setEyeRadius(value);
+
+    const float radius = float(value) / float(ui->eyeRadiusSlider->maximum());
+    m_data.leftEye.pupilRadius.value = float(radius);
+    m_data.rightEye.pupilRadius.value = float(radius);
+    m_graphicsScene->m_eyePair->setConfig(m_data);
 }
 
 
@@ -72,8 +76,11 @@ void MainWindow::onTopBrowThickenssValue(const int &value)
 {
     const QString s = "Top Brow Thickness: " + QString::number(value);
     ui->topBrowThicknessLabel->setText(s);
-    m_graphicsScene->m_eyePair->m_leftEye->setTopBrowThickness(value);
-    m_graphicsScene->m_eyePair->m_rightEye->setTopBrowThickness(value);
+
+    const float val = float(value) / float(ui->topBrowThicknessSlider->maximum());
+    m_data.leftEye.topBrow.thickness.value = val;
+    m_data.rightEye.topBrow.thickness.value = val;
+    m_graphicsScene->m_eyePair->setConfig(m_data);
 }
 
 
@@ -81,8 +88,11 @@ void MainWindow::onBottomBrowThickenssValue(const int &value)
 {
     const QString s = "Bottom Brow Thickness: " + QString::number(value);
     ui->bottomBrowThicknessLabel->setText(s);
-    m_graphicsScene->m_eyePair->m_leftEye->setBottomBrowThickness(value);
-    m_graphicsScene->m_eyePair->m_rightEye->setBottomBrowThickness(value);
+
+    const float val = float(value) / float(ui->bottomBrowThicknessSlider->maximum());
+    m_data.leftEye.bottomBrow.thickness.value = val;
+    m_data.rightEye.bottomBrow.thickness.value = val;
+    m_graphicsScene->m_eyePair->setConfig(m_data);
 }
 
 
@@ -90,8 +100,12 @@ void MainWindow::onTopBrowAngleValue(const int &value)
 {
     const QString s = "Top Brow Angle: " + QString::number(value);
     ui->topBowAngleLabel->setText(s);
-    m_graphicsScene->m_eyePair->m_leftEye->setTopBrowAngle(value);
-    m_graphicsScene->m_eyePair->m_rightEye->setTopBrowAngle(value);
+
+    const float range = float(ui->topBrowAngleSlider->maximum() - ui->topBrowAngleSlider->minimum());
+    const float val = float(ui->topBrowAngleSlider->minimum() + value) / range;
+    m_data.leftEye.topBrow.angle.value = val;
+    m_data.rightEye.topBrow.angle.value = val;
+    m_graphicsScene->m_eyePair->setConfig(m_data);
 }
 
 
@@ -99,6 +113,10 @@ void MainWindow::onBottomBrowAngleValue(const int &value)
 {
     const QString s = "Bottom Brow Angle: " + QString::number(value);
     ui->bottomBrowAngleLabel->setText(s);
-    m_graphicsScene->m_eyePair->m_leftEye->setBottomBrowAngle(value);
-    m_graphicsScene->m_eyePair->m_rightEye->setBottomBrowAngle(value);
+
+    const float range = float(ui->bottomBrowAngleSlider->maximum() - ui->bottomBrowAngleSlider->minimum());
+    const float val = float(ui->bottomBrowAngleSlider->minimum() + value) / range;
+    m_data.leftEye.bottomBrow.angle.value = val;
+    m_data.rightEye.bottomBrow.angle.value = val;
+    m_graphicsScene->m_eyePair->setConfig(m_data);
 }
