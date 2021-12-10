@@ -84,10 +84,10 @@ void EyePair::applyEyeConfig(std::unique_ptr<Eye> &eye, const EyeConfig &config)
     const float maxAngle = 45;
 
     const float eyeRadius = config.pupilRadius.value * scalar;
-    const float bottomBrowThickness = config.bottomBrow.thickness.value * eyeRadius;
-    const float bottomBrowAngle = -maxAngle + (config.bottomBrow.angle.value * (maxAngle * 2.0));
-    const float topBrowThickness = config.topBrow.thickness.value * eyeRadius;
-    const float topBrowAngle = -maxAngle + (config.topBrow.angle.value * (maxAngle * 2.0));
+    const float bottomBrowThickness = config.bottomBrow.thickness.value * (eyeRadius * 2.0f);
+    const float bottomBrowAngle = -maxAngle + (config.bottomBrow.angle.value * (maxAngle * 2.0f));
+    const float topBrowThickness = config.topBrow.thickness.value * (eyeRadius * 2.0f);
+    const float topBrowAngle = -maxAngle + (config.topBrow.angle.value * (maxAngle * 2.0f));
 
     eye->setEyeRadius(config.pupilRadius.value * scalar);
     eye->setBottomBrowThickness(bottomBrowThickness);
