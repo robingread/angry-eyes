@@ -2,7 +2,7 @@
 #include <iostream>
 
 
-EyePair::EyePair(QGraphicsScene *scene)
+EyePair::EyePair(QGraphicsScene *scene) : m_scene(scene)
 {
 
     m_center = QPoint(scene->sceneRect().center().x(), scene->sceneRect().center().y());

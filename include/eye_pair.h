@@ -32,6 +32,7 @@ private:
     int m_interocularDistance;
     int m_eyeRadius;
     QPoint m_center;
+    QGraphicsScene* m_scene;
 
     void applyEyeConfig(
             std::unique_ptr<Eye> &eye,
