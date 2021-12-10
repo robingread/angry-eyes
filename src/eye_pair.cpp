@@ -55,11 +55,10 @@ bool EyePair::setEyeRadius(const int &radius)
 }
 
 
-bool EyePair::setInterocularDistance(const int &distance)
+void EyePair::setInterocularDistance(const int &distance)
 {
     m_interocularDistance = distance;
     setEyePosition(m_center);
-    return true;
 }
 
 
