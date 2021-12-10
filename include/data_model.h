@@ -27,6 +27,7 @@ struct EyeConfig
 
 struct FaceConfig
 {
+    Value interocularDistance;
     EyeConfig leftEye;
     EyeConfig rightEye;
 };
