@@ -76,20 +76,25 @@ void Eye::setBottomBrowAngle(const int &angle)
 
 void Eye::draw()
 {
+    const int browPadding = 2;
     const int r = m_eyeRadius;
+    const int eyeWidth = m_eyeRadius * 2;
     const int pupilX = m_eyePos.x() - r;
     const int pupilY = m_eyePos.y() - r;
-    m_pupil->setRect(pupilX, pupilY, m_eyeRadius * 2, m_eyeRadius * 2);
+    m_pupil->setRect(pupilX, pupilY, eyeWidth, eyeWidth);
 
-    const int topBrowX = pupilX;
+    const int topBrowX = pupilX - browPadding;
     const int topBrowY = pupilY;
-    m_topBrow->setRect(topBrowX, topBrowY, m_eyeRadius * 2, m_topBrowThickness);
+    const int topBrowWidth = eyeWidth + (browPadding * 2);
+    const int topBrowHeight = m_topBrowThickness;
+    m_topBrow->setRect(topBrowX, topBrowY, topBrowWidth, topBrowHeight);
     m_topBrow->setTransformOriginPoint(m_eyePos.x(), m_eyePos.y());
     m_topBrow->setRotation(m_topBrowAngle);
 
-    const int bottomBrowX = pupilX;
-    const int bottomBrowY = pupilY + (2 * m_eyeRadius) - m_bottomBrowThickness;
-    m_bottomBrow->setRect(bottomBrowX, bottomBrowY, m_eyeRadius * 2, m_bottomBrowThickness);
+    const int bottomBrowX = pupilX - browPadding;
+    const int bottomBrowY = pupilY + eyeWidth - m_bottomBrowThickness;
+    const int bottomBrowWidth = eyeWidth + (browPadding * 2);
+    m_bottomBrow->setRect(bottomBrowX, bottomBrowY, bottomBrowWidth, m_bottomBrowThickness);
     m_bottomBrow->setTransformOriginPoint(m_eyePos.x(), m_eyePos.y());
     m_bottomBrow->setRotation(m_bottomBrowAngle);
 }
