@@ -13,9 +13,12 @@ Eye::Eye(QGraphicsScene *scene, const Side &side) : QObject(scene)
     m_bottomBrowAngle = 0;
     m_eyeColour = Qt::darkMagenta;
 
+    QPen pen(Qt::transparent);
+    pen.setWidth(0);
+
     m_pupil = scene->addEllipse(0, 0, 0, 0, QPen(m_eyeColour), QBrush(m_eyeColour));
-    m_topBrow = scene->addRect(0, 0, 0, 0, QPen(Qt::black), QBrush(Qt::black));
-    m_bottomBrow = scene->addRect(0, 0, 0, 0, QPen(Qt::black), QBrush(Qt::black));
+    m_topBrow = scene->addRect(0, 0, 0, 0, pen, QBrush(Qt::black));
+    m_bottomBrow = scene->addRect(0, 0, 0, 0, pen, QBrush(Qt::black));
 }
 
 
