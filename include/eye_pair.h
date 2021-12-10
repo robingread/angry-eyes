@@ -24,7 +24,6 @@ public:
     QPoint getEyePosition() const;
 
     bool setEyeRadius(const int &radius);
-    bool setInterocularDistance(const int &distance);
     void setEyePosition(const QPoint &point);
     void setTopBrowThickness(const int &thickness) const;
 
@@ -32,9 +31,12 @@ private:
     int m_interocularDistance;
     int m_eyeRadius;
     QPoint m_center;
+    QGraphicsScene* m_scene;
 
     void applyEyeConfig(
             std::unique_ptr<Eye> &eye,
             const EyeConfig &config);
+
+    void setInterocularDistance(const int &distance);
 
 };

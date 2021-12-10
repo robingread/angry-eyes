@@ -68,7 +68,10 @@ void MainWindow::onInterocularDistanceValue(const int &value)
 {
     const QString s = "Interocular Distance: " + QString::number(value);
     ui->interocularDistanceLabel->setText(s);
-    m_graphicsScene->m_eyePair->setInterocularDistance(value);
+
+    const float val = float(value) / float(ui->interocularDistanceSlider->maximum());
+    m_data.interocularDistance.value = val;
+    m_graphicsScene->m_eyePair->setConfig(m_data);
 }
 
 
