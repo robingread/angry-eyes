@@ -25,6 +25,7 @@ void EyePair::setConfig(const FaceConfig &config)
 {
     applyEyeConfig(m_leftEye, config.leftEye);
     applyEyeConfig(m_rightEye, config.rightEye);
+    setInterocularDistance(m_scene->width() * config.interocularDistance.value);
 }
 
 
