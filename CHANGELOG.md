@@ -4,6 +4,9 @@ Please refer to keepachnagelog.org when editing this file.
 
 ## [Unreleased]
 
+### Changed
+- Added padding for the eyebrows around the pupile so that we get cleaner rendering.
+
 ## [0.0.1] - 2021/12/10
 
 ### Added
